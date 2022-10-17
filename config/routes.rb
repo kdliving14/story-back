@@ -1,12 +1,12 @@
 Rails.application.routes.draw do
   resources :inventories, only: [:index, :create]
-  resources :items
-  resources :userchoices
-  resources :userstories
+  resources :items, only: [:index]
+  resources :userchoices, only: [:index, :show, :create]
+  resources :userstories, only: [:index, :show, :create, :update, :destroy]
   resources :choices, only: [:index, :show]
-  resources :events
-  resources :stories
-  resources :users
+  resources :events, only: [:index, :show]
+  resources :stories, only: [:index]
+  resources :users, only: [:show, :create, :update, :destroy]
 
   post "/login", to: "sessions#create" 
   delete "/logout", to: "sessions#destroy"
